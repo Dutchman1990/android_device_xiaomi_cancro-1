@@ -9,10 +9,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/chargeonlymode:root/sbin/chargeonlymode
 
-# Quick charging
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.usb.hvdcp.detect=true
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -53,18 +49,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/quipc.conf:system/etc/quipc.conf \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gps.agps_provider=1
-
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8974 \
     libxml2 \
     Snap
-
-# Camera api
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -76,13 +65,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/changepowermode.sh:system/bin/changepowermode.sh
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.perf.cores_online=1
-
-# Art
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-swap=false
 
 # WiFi
 PRODUCT_COPY_FILES += \
@@ -105,10 +87,6 @@ PRODUCT_PACKAGES += \
     hostapd.accept \
     hostapd.deny
 
-# Enable Adaptive Multi-Rate Wideband
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.enable.amr.wideband=1
-
 # KeyLayout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/atmel-maxtouch.kl:system/usr/keylayout/atmel-maxtouch.kl \
@@ -122,13 +100,6 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     libwcnss_qmi \
     wcnss_service
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    ro.use_data_netmgrd=true \
-    persist.data.netmgrd.qos.enable=true \
-    persist.data.tcpackprio.enable=true \
-    ro.data.large_tcp_window_size=true
 
 # IPC router config
 PRODUCT_COPY_FILES += \
@@ -178,22 +149,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdb/MTP/MTP_Hdmi_cal.acdb:system/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
     $(LOCAL_PATH)/audio/acdb/MTP/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
     $(LOCAL_PATH)/audio/acdb/MTP/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb \
-    $(LOCAL_PATH)/audio/acdb/MTP_4/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP_4/MTP_Bluetooth_cal.acdb \
-    $(LOCAL_PATH)/audio/acdb/MTP_4/MTP_General_cal.acdb:system/etc/acdbdata/MTP_4/MTP_General_cal.acdb \
-    $(LOCAL_PATH)/audio/acdb/MTP_4/MTP_Global_cal.acdb:system/etc/acdbdata/MTP_4/MTP_Global_cal.acdb \
-    $(LOCAL_PATH)/audio/acdb/MTP_4/MTP_Handset_cal.acdb:system/etc/acdbdata/MTP_4/MTP_Handset_cal.acdb \
-    $(LOCAL_PATH)/audio/acdb/MTP_4/MTP_Hdmi_cal.acdb:system/etc/acdbdata/MTP_4/MTP_Hdmi_cal.acdb \
-    $(LOCAL_PATH)/audio/acdb/MTP_4/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP_4/MTP_Headset_cal.acdb \
-    $(LOCAL_PATH)/audio/acdb/MTP_4/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP_4/MTP_Speaker_cal.acdb
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.ssr=false \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    audio.offload.video=false \
-    use.voice.path.for.pcm.voip=true \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.voicerec=true \
-    persist.audio.fluence.speaker=false
+    $(LOCAL_PATH)/audio/acdb/MTP/MTP_Speaker_cal_4.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal_4.acdb
 
 # Media profile
 PRODUCT_COPY_FILES += \
@@ -230,25 +186,6 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     tinymix
 
-# Enable more sensor
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.sensors.qmd=true \
-    ro.qualcomm.sensors.smd=true \
-    ro.qualcomm.sensors.cmc=true \
-    ro.qualcomm.sensors.vmd=true \
-    ro.qualcomm.sensors.gtap=true \
-    ro.qualcomm.sensors.pedometer=true \
-    ro.qualcomm.sensors.pam=true \
-    ro.qualcomm.sensors.scrn_ortn=true \
-    ro.qualcomm.sensors.georv=true \
-    ro.qualcomm.sensors.game_rv=true \
-    ro.qc.sensors.step_detector=true \
-    ro.qc.sensors.step_counter=true \
-    ro.qc.sensors.max_geomag_rotvec=true \
-    debug.qualcomm.sns.hal=w \
-    debug.qualcomm.sns.daemon=w \
-    debug.qualcomm.sns.libsensor1=w
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
@@ -268,14 +205,6 @@ PRODUCT_PACKAGES += \
     memtrack.msm8974 \
     liboverlay
 
-# Do not power down SIM card when modem is sent to Low Power Mode.
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=0
-
-# Wifi
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.cne.feature=0
-
 # Radio
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
@@ -289,9 +218,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.fm.transmitter=false
 
 # Misc dependency packages
 PRODUCT_PACKAGES += \
@@ -307,24 +233,8 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
-# Bluetooth
-PRODUCT_PROPERTY_OVERRIDES += \
-    qcom.bt.dev_power_class=1 \
-    bluetooth.hfp.client=1 \
-    ro.bluetooth.alwaysbleon=true \
-    qcom.bt.dev_power_class=1
-
 # System properties
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.debug.wfd.enable=1 \
-    persist.demo.hdmirotationlock=false \
-    ro.hdmi.enable=true \
-    ro.opengles.version=196608 \
-    ro.sf.lcd_density=480 \
-    persist.hwc.mdpcomp.enable=true \
-    persist.timed.enable=true \
-    persist.sys.wfd.virtual=0 \
-    ro.telephony.default_network=9
 
 # Zip
 PRODUCT_PACKAGES += \
@@ -361,7 +271,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.software.print.xml:system/etc/permissions/android.software.print.xml
 
 # Screen density
