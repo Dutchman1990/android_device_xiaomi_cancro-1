@@ -86,7 +86,6 @@ FEATURE_QCRIL_UIM_SAP_SERVER_MODE := true
 # Graphics
 USE_OPENGL_RENDERER               := true
 TARGET_USES_C2D_COMPOSITION       := true
-TARGET_USE_COMPAT_GRALLOC_PERFORM := true
 TARGET_USES_ION                   := true
 OVERRIDE_RS_DRIVER                := libRSDriver_adreno.so
 VSYNC_EVENT_PHASE_OFFSET_NS       := 7500000
